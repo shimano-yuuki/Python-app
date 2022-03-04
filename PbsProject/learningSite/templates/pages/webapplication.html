@@ -1,0 +1,516 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block csslink %}
+<link rel="stylesheet" href="{% static 'css/webapplication.css' %}">
+{% endblock %}
+{% block content %}
+<main class="webapplication__page__main">
+    <div class="webapplication__page__container__outside">
+        <div class="webapplication__page__container">
+            <div class="webapplication__title__wrapper">
+                <h1 class="webapplication__title">
+                    Webサイト
+                </h1>
+            </div>
+            <div class="webapplication__contents__wrapper">
+                <p class="webapplication__contents">
+                    <p>
+                        <p>
+                            PythonのWebフレームワークであるDjango（ジャンゴ）を使って、自端末にWebサイトを作る一連の流れを詳しく解説していきます。<br><br>
+                            私の場合Djangoを使ってWebサイトを作り始めようと思ったとき、まず何をインストールすればいいのかわかりませんでした。<br><br>
+                            そしてサイトによってDjangoを使ったWebサイト作成の作業内容に違いがあり、どの方法が正解なのか理解するまで時間がかかった経験があります。<br><br>
+                            どういった流れで作っていくのかが、詳しく書いてなく不満に思ったこともありましたね。<br><br>
+                            なのでここではDjango初心者の方にも理解しやすく、すぐに自端末でWebサイト開発に取り掛かれるように記載し、解説していきます。<br><br>
+                            またここで解説するDjangoは、データベースにsqlite3ではなく、MySQLを使用しております。
+                        </p>
+                        <h2>
+                            Django 
+                        </h2>
+                        <h3>
+                            Djangoとは
+                        </h3>
+                        <p>
+                            Djangoとは、Pythonによるフレームワークの１つです。<br>
+                            Webアプリケーション開発に適したフレームワークであり、様々な機能を有しています。<br><br>
+                            
+                            Pythonのフレームワークの中では、最も人気・知名度が高いです。<br><br>
+                            
+                            作成したいWebアプリケーションが小規模でも大規模でも、どんなシステムにも対応できます。<br><br>
+                            
+                            Djangoを使うことで１からWebアプリケーションを作成するよりも、大幅に時間を節約することができます。Djangoのような開発に必要な機能が揃っているフレームワークをフルスタックフレームワークと呼ばれます。<br><br>
+                            
+                            総じて次のメリットがあると言えます。
+                        </p>
+                        <br>
+                        <p class="point">
+                            開発のスピードの向上・効率化 <br><br>
+                            コーディング量の削減によるミスやエラーの現象
+                        </p>
+                        <h3>
+                            MTVフレームワーク
+                        </h3>
+                        <p>
+                            DjangoはMTV（モデル・テンプレート・ビュー）という設計手法が使われています。<br><br>
+
+                            ＭはModel（モデル）、ＴはTemplate（テンプレート）、ＶはView（ビュー）を表します。<br><br>
+                            それぞれ次の機能を有します。    
+                        </p>
+                        <br>
+                        <p class="point">
+                            ・Model（モデル）：データベースとの連携を行う。該当ファイルはmodels.py <br><br>
+                            ・Template（テンプレート）：フロントエンド（HTML）を扱う。該当ファイルはtemplatesフォルダ内のhtmlファイル <br><br>
+                            ・View（ビュー）：バックエンドを扱う。該当ファイルはviews.py
+                        </p>
+                        <p>
+                            その他にルーティングに関しては、URLs（urls.py）を使用しています。<br><br>
+
+                            MTVの関係は次図のようになります。
+                        </p>
+                        <img  class="webimg" src="{% static 'img/webapplication01.png' %}" alt="img">
+                        <h2>
+                            事前準備
+                        </h2>
+                        <p>自端末でDjangoによるWebサイト開発ができるように、必要なソフトを２つインストールしましょう。<br>
+                            必要なソフトはAnacondaとXAMPP、この二つだけです。<br><br>
+                            
+                            Anaconda（アナコンダ）とは、Pythonのディストリビューションです。<br>
+                            簡単に説明すると、Pythonの開発環境を作るうえで必要なライブラリやツールすべてを一気にインストールできる便利ソフトです。
+                            
+                        </p>
+                        <p>XAMPP（ザンプ）とは、これはWebアプリケーション開発には欠かせないソフトウェアなどを一括でインストールできる優れものなのです。<br>
+                            Webサーバーとしての機能を提供するApache、データベースの機能を提供するMySQLがXAMPPをインストールするだけで使用できます。
+                            
+                        </p>
+                        <p>
+                            Djangoで使用するデータベースMySQL機能はXAMPPで提供します。
+                        </p>
+                        <h2>
+                            まずは一連の流れを見よう
+                        </h2>
+                        <h3>
+                            HTTPリクエスト受信からHTTPレスポンス送信までの流れ
+                        </h3>
+                        <p>以下はユーザーがブラウザを通してDjangoサーバーにHTTPリクエストを送ってから、DjangoがブラウザにHTTPリクエストを返すまでの流れです。
+                        </p>
+                        <img class="webimg" src="{% static 'img/webapplication02.png' %}" alt="img">
+                    </p>
+                    <p class="point">
+                        ブラウザはサーバーにHTTPリクエストを送信 <br>
+                        urls.pyから一致するURLパターンを検索<br>
+                        一致したURLパターンに紐づいているviews.py内の関数を実行<br>
+                        関数はモデル（models.py）を通してデータベース操作を行いデータを取得<br>
+                        templateフォルダからtemplate_nameで指定されているテンプレートを取得<br>
+                        データベースのデータ（context）をテンプレートに反映<br>
+                        作成されたHTMLをHTTPレスポンスでブラウザに返す
+                    </p>
+                    <p>
+                        最初からこの流れをすべて理解する必要はないです。<br>
+                        Webアプリケーションを作成していくうちに理解は深まっていくので、今はとりあえずこういう流れで動いていくんだなと思ってください。<br><br>
+                        
+                        上記のDjangoの動きと同じく、最初はファイル構成もわかっていると理解の進みが早くなります。<br><br>
+                        
+                        以下にDjangoでのファイル構成図を示します。
+                        
+                    </p>
+                    <img class="webimg" src="{% static 'img/webapplication03.png' %}" alt="img">
+                    <p>
+                        次項から解説するWebアプリケーション開発の流れを行っていただくと、上図のようなファイル構成になります。<br><br>
+
+                        ぜひ実際にWebアプリケーション開発をチャレンジしてみてください。
+                    </p>
+                    <h3>
+                        DjangoでWebサイトを作成する流れ
+                    </h3>
+                    <p>一つ一つ詳しいやり方を解説する前に、簡単にどういう流れでDjangoでWebサイトを作成していくかを見てみましょう。</p>
+                    <p class="point">
+                        1. 仮想環境を構築<br><br>
+
+                        2. 必要なパッケージをインストール<br><br>
+                        
+                        3. プロジェクトを作成<br><br>
+                        
+                        4. MySQLにデータベース・ユーザーを作成<br><br>
+                        
+                        5. settings.pyの変更<br><br>
+                        
+                        6. マイグレートの実施<br><br>
+                        
+                        7. サーバの起動<br><br>
+                        
+                        8. 管理者superuserを作成<br><br>
+                        
+                        9. アプリケーションを作成
+                    </p>
+                    <p>以上の流れでパソコン内にDjango開発環境を構築していきます。<br><br>
+
+                        それでは詳しくそれぞれの方法を解説していきます。
+                    </p>
+                    <h2>
+                        Webサイト開発
+                    </h2>
+                    <h3>
+                        仮想環境を構築
+                    </h3>
+                    <p>
+                        まずは仮想環境を作成します。仮想環境を作ることにより、今後作成するプログラムごとに開発環境を分けることができます。
+                    </p>
+                    <p>
+                        pythonフォルダ内にvenvという仮想環境を作成し、仮想環境venvを有効化した状況であると想定して説明していきます。
+                    </p>
+                    <h3>
+                        必要なパッケージをインストール
+                    </h3>
+                    <p>
+                        次に必要なパッケージをインストールします。パッケージとは新たな機能をPythonに追加するために必要となるものだと思ってください。<br><br>
+
+                        今回はDjango機能を追加するためにDjangoパッケージと、データベースMySQLとの連携機能を追加するためにmysqlclientパッケージをインストールします。<br><br>
+                        
+                        パッケージのインストールには、pipというPythonパッケージの管理ツールを使います。<br><br>
+                        
+                        まずpipを最新バージョンにするために以下のコマンドを実行します。<br>
+                        ＊コマンドの実行には仮想環境構築の際に使ったAnaconda Promptを引き続き使用します
+                        
+                    </p>
+                    <p class="programming">
+                        python -m pip install --upgrade pip
+                    </p>
+                    <p>
+                        これでpipが最新バージョンにアップデートされました。<br>
+                        現在のpipのバージョン確認には以下コマンドを実行します。
+                        
+                    </p>
+                    <p class="programming">
+                        pip -V
+                    </p>
+                    <p>
+                        次にpipを用い、Djangoパッケージとmysqlclientパッケージをインストールします。
+                    </p>
+                    <p class="programming">
+                        pip install Django <br>
+                        pip install mysqlclient
+                    </p>
+                    <p>
+                        これで開発環境内にDjangoとデータベースMySQLを使用できる環境が整いました。
+                    </p>
+                    <h3>
+                        プロジェクトを作成
+                    </h3>
+                    <p>
+                        Django、MySQLの環境ができたら、次はプロジェクトを作成します。<br>
+                        けどいきなりプロジェクトと言われてもイメージがわきにくいですよね。<br><br>
+                        
+                        プロジェクトはWebアプリケーションの単位と考えるとイメージするとわかりやすいと思います。<br><br>
+                        
+                        例えば、あなたがWebブログアプリとWeb家計簿アプリを作るとします。この場合、あなたはBlogプロジェクトと、Expensesプロジェクトを作成します。<br><br>
+                        
+                        プロジェクトの作成には、管理コマンドユーティリティの1つdjango-adminの管理コマンドstartprojectを使用します。
+                    </p>
+                    <p>以下のように管理コマンドstartprojectを実行します。</p>
+                    <p class="programming">django-admin startproject プロジェクト名 (フォルダ名)</p>
+                    <p>フォルダ名に「.」（ドット）を指定すると、現在のフォルダにプロジェクトに必要なモジュール群が生成されます。フォルダ名を指定しない場合は、現在のフォルダにプロジェクト用フォルダが作成され、その中にモジュール群が置かれます。<br><br>
+
+                    今回はofficeというプロジェクトを現在のフォルダに作成します。
+                    </p>
+                    <p class="programming">(venv) C:\Users\Desktop\python> django-admin startproject office .</p>
+                    <p>これによりpythonフォルダは以下のような構成になります。</p>
+                    <p class="programming">
+                        pythonbr <br>
+                        |── office <br>
+                        |   |── __init__.py <br>
+                        |   |── asgi.py <br>
+                        |   |── settings.py <br>
+                        |   |── urls.py <br>
+                        |   |__ wsgi.py <br>
+                        |── venv <br>
+                        |     |__ … <br>
+                        |__ manage.py
+                    </p>
+                    <p>
+                        このようにdjango-admin startprojectを実行することでプロジェクトのひな形が自動で生成されます。生成された主要ファイルの用途について以下に記します。
+                    </p>
+                    <p class="point">
+                        ・__init__.py : 中身は空であり、プロジェクトフォルダがPythonパッケージであることを表す
+                        ・settings.py : Djangoの設定を記述する
+                        ・urls.py : ルーティングに関する設定を記述する
+                        ・manage.py : django-adminコマンド利用時のショートカットスクリプト
+                    </p>
+                    <p>manage.pyは開発に必要な様々なコマンドが詰まったスクリプトです。開発サーバーの起動やマイグレーション、スーパーユーザーの作成などで利用する重要なスクリプトの1つです。
+                    </p>
+                    <h3>MySQLにデータベース・ユーザーを作成
+                    </h3>
+                    <p>DjangoによるWebアプリケーションを作成する上でデータベースは必要不可欠です。本記事ではデータベースにMySQLを利用します。
+                    </p>
+                    <p>
+                        DjangoとMySQLの連携設定をする前に、MySQLで使用するデータベースとユーザーを作成します。<br><br>
+
+                        まずXAMPP Control Panelを起動して、MySQLをStartして下さい。MySQLが起動したら、Control Panel右側からShellを押してコマンドプロンプトを起動します。<br><br>
+                        
+                        MySQLに接続するには下記コマンドを入力・実行します。
+                    </p>
+                    <p class="programming">mysql -u ユーザー名 -p</p>
+                    <p>
+                        XAMPPインストール初期はユーザー名がroot、パスワードなしでログインできます。<br><br>
+
+                        ログインしましたら、ユーザーを作成します。<br>
+                        以下のコマンドでユーザーを作成してください。<br>
+                    </p>
+                    <p class="programming">CREATE USER ユーザー名 IDENTIFIED BY ‘パスワード’;</p>
+                    <p>ユーザーが作成できたら、そのユーザーに対して権限を付与してあげます。</p>
+                    <p class="programming">grant all on *.* to ユーザー名@localhost identified by ‘パスワード’;</p>
+                    <p>ユーザーの準備は整いましたので、次はデータベースを作成しましょう。<br>
+                        以下コマンドでデータベースが作成できます。
+                    </p>
+                    <p class="programming">CREATE DATABASE 名前;</p>
+                    <p>例として、ユーザー名：office（パスワード：password）、データベース名：Officeで作成した場合を以下に示します。</p>
+                    <p class="programming">
+                        CREATE USER office IDENTIFIED BY ‘password’; <br>
+                        grant all on *.* to office@localhost identified by ‘password’; <br>
+                        CREATE DATABASE Office;
+                    </p>
+                    <h3>
+                        settings.pyの変更
+                    </h3>
+                    <p>
+                        プロジェクト生成時に作成されたsettings.pyはプロジェクトの設定を記述しています。
+                    </p>
+                    <p>
+                        settings.pyをデフォルト値から一部変更・追記します。
+                    </p>
+                    <p class="programming">
+                        ALLOWED_HOSTS = ['127.0.0.1'] <br>
+                        LANGUAGE_CODE = 'ja' <br>
+                        TIME_ZONE = 'Asia/Tokyo' <br>
+                        STATIC_URL = '/static/' <br>
+                        STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+                    </p>
+                    <p>
+                        settings.pyはデフォルトではsqlite3と連携するように記載されてます。<br>
+                        それをデータベースMySQLと連携させるためにsettings.pyを以下のように変更します。
+                        
+                    </p>
+                    <p class="programming">
+                        DATABASES = { <br>
+                        'default': { <br>
+                        &nbsp;&nbsp;'ENGINE': 'django.db.backends.mysql', <br>
+                        &nbsp;&nbsp;'NAME': 'Office', <br>
+                        &nbsp;&nbsp;'USER': 'office', <br>
+                        &nbsp;&nbsp;'PASSWORD': 'password', <br>
+                        &nbsp;&nbsp;'HOST': 'localhost', <br>
+                        &nbsp;&nbsp;'PORT': '3306', <br>
+                        &nbsp;&nbsp;'OPTIONS': { <br>
+                        &nbsp;&nbsp;&nbsp;'init_command': "SET sql_mode='STRICT_TRANS_TABLES'", <br>
+                        &nbsp;&nbsp;&nbsp;'charset': 'utf8mb4',
+                            },<br>
+                    }
+                    </p>
+                    <p>これで先ほど作成したデータベースを、作成したユーザーで繋げれるようになりました。</p>
+                    <h3>マイグレートの実施</h3>
+                    <p>
+                        Djangoにはモデルという、Webアプリケーションとデータベースを連携させる仕組みがあります。<br><br>
+
+                        このモデルを使うことで簡単にデータベースからデータの検索・取得・追加・削除といった一連のデータベース操作ができます。
+                    </p>
+                    <p>以下のコマンドを実行することでDjangoにデフォルトで用意されているモデルがデータベースに反映されます。</p>
+                    <p class="programming">
+                        python manage.py migrate
+                    </p>
+                    <h3>
+                        開発用WEBサーバーの起動
+                    </h3>
+                    <p>
+                        これで開発用WEBサーバーを起動して、サイトにアクセスする準備が整いました。<br>
+                        ではサイトにアクセスできるようにWEBサーバーを以下コマンドを実行して起動します。 以下コマンドはmanage.pyが入っているフォルダに移動してから実行してください。
+                    </p>
+                    <p class="programming">
+                        python manage.py runserver
+                    </p>
+                    <p>エラー表示なく開発用WEBサーバーが起動したら、サイトにアクセスしてみましょう。<br>
+                        ブラウザで以下のアドレスを開いてみてください。
+                    </p>
+                    <h3>
+                        http://127.0.0.1:8000
+                    </h3>
+                    <img class="webimg" src="{% static 'img/webapplication04.png' %}" alt="img">
+                    <p>
+                        この画面が表示されていれば、無事WEBサーバーは起動しており、そのWEBサーバー上でサイトが動いているのです。
+                    </p>
+                    <h3>
+                        管理者superuserを作成
+                    </h3>
+                    <p>定義したモデルを管理できる管理（admin）サイトがDjangoには用意されています。<br><br>
+
+                        これから紹介する管理サイトは、基本的にユーザーが使うサイトではなく、管理者が使用するべきサイトです。
+                    </p>
+                    <p class="point"> モデルとは、データベースのテーブルを自動的に作成してくれる機能。また作成するだけでなく、モデルに定義されているクラスを操作することで、データベースを簡単に操作することができる。</p>
+                    <p>
+                        まず管理サイトにログインするためのユーザーを作成します。<br>
+                        以下コマンドを実行してください。
+                    </p>
+                    <p class="programming">
+                        python manage.py createsuperuser
+                    </p>
+                    <p>作成するユーザー名を入力してください。以下ではユーザー名：adminを作成します。</p>
+                    <p class="programming">
+                        Username: admin
+                    </p>
+                    <p>
+                        次にメールアドレスを入力し、最後にユーザーに対するパスワードを２回入力します。<br><br>
+
+                        これでユーザーが作成されましたので、サーバーを起動して管理サイトにアクセスしてみましょう。<br><br>
+                        
+                        サーバーが起動していない場合は、サーバーを起動しておいてください。
+                        
+                    </p>
+                    <p class="programming">python manage.py runserver</p>
+                    <p>ブラウザを起動して、以下URLにアクセスしましょう。</p>
+                    <p class="programming">http://127.0.0.1:8000/admin/</p>
+                    <img class="webimg" src="{% static 'img/webapplication05.png' %}" alt="img">
+                    <p>
+                        上記のようなページが表示されますので、先ほど作成したユーザー名・パスワードでログインできます。<br><br>
+
+                        ログインした先でデータベースを簡単に操作することができます。
+                        
+                    </p>
+                    <h3>
+                        アプリケーションを作成
+                    </h3>
+                    <p>
+                        ではDjangoによるWEBサイト作成の最後に、プロジェクト内にアプリケーションを作成します。<br>
+                        Djangoではアプリケーションと呼ばれる単位でWebアプリケーションの機能を分割します。<br><br>
+                        
+                        アプリケーションの作成には以下のコマンドを実行します。ここではfiveというアプリケーションを作ってみます。
+                        
+                    </p>
+                    <p class="programming">python manage.py startapp five</p>
+                    <p>
+                        pythonディレクトリ内にfiveディレクトリが作成されます。この新しいディレクトリ内にアプリケーションを作成していきます。<br><br>
+
+                        現在のディレクトリ構成は以下のようになっています。
+                    </p>
+                    <p class="programming">
+                        python <br>
+                        ├── five <br>
+                        │   ├── admin.py <br>
+                        │   ├── apps.py <br>
+                        │   ├── __init__.py <br>
+                        │   ├── migrations <br>
+                        │   │   └── __init__.py <br>
+                        │   ├── models.py <br>
+                        │   ├── tests.py <br>
+                        │   └── views.py <br>
+                        ├── manage.py <br>
+                        ├── office <br>
+                        │   ├── __init__.py <br>
+                        │   ├── settings.py <br>
+                        │   ├── urls.py <br>
+                        │   └── wsgi.py <br>
+                        ├── myvenv <br>
+                          └── ...
+                    </p>
+                    <p>
+                        アプリケーションを作成したら、settings.pyに作成したアプリを登録します。<br>
+                        登録方法は以下の１行を追加するだけです。
+                        
+                    </p>
+                    <p class="programming">
+                        INSTALLED_APPS = [<br>
+                        'django.contrib.admin', <br>
+                        'django.contrib.auth', <br>
+                        'django.contrib.contenttypes', <br>
+                        'django.contrib.sessions', <br>
+                        'django.contrib.messages', <br>
+                        'django.contrib.staticfiles', <br>
+                        'five.apps.FiveConfig',		//この１行を追加します <br>
+                    ]
+                    </p>
+                    <p>
+                        せっかくなので作成したアプリケーションを通してWebサイトが表示されるようにしましょう。<br><br>
+
+                        Djangoではurls.pyとviews.pyファイルを使って、URLのコントロールをします。<br>
+                        どのURLに対して、どのHTMLファイルを対応させるかをurls.py、views.pyに記述します。<br><br>
+                        
+                        簡単に説明すると、これら２つのpyファイルがURLのパターンに応じて、どのHTMLファイルを対応させるかのパターンマッチングをさせています。<br><br>
+                        
+                        まずプロジェクトディレクト内のsettings.pyを開いてみてください。
+                    </p>
+                    <p>
+                        urlpatterns = [<br>
+                        path('admin/', admin.site.urls),<br>
+                        ]
+                    </p>
+                    <p>
+                        最初から記載されているpathは、adminにアクセスした場合はログインページを表示させるという意味です。<br><br>
+
+                        ここまででわかるように、URLのパターンマッチングはプロジェクトディレクト内のurls.pyから見ていきます。<br><br>
+                        
+                        それでは、urls.pyを以下のようにしてみてください。
+                        
+                    </p>
+                    <p class="programming">
+                        from django.contrib import admin <br>
+                        from django.urls import path, include <br>
+                        urlpatterns = [ <br>
+                            path('admin/', admin.site.urls), <br>
+                            path('', include('five.urls')), <br>
+                        ]
+                    </p>
+                    <p>
+                        include関数を使うために、２行目でincludeをインポートします。<br>
+                        新たに追加した５行目で、http://127.0.0.0:8000へのリクエストはすべてfive.urlsにリダイレクトするようになります。<br><br>
+                        
+                        これはfiveアプリケーションディレクトリ内のurls.pyを見に行ってください、という意味になります。
+                    </p>
+                    <p>
+                        ではfiveディレクトリを見ると、urls.pyはないですよね。なのでurls.pyを作ってください。<br>
+                        作成したら以下のように記述してください。
+                    </p>
+                    <p class="programming">
+                        from django.urls import path <br>
+                        from . import views <br>
+                        urlpatterns = [ <br>
+                            path('', views.index, name='index'), <br>
+                        ]
+                    </p>
+                    <p>
+                        ここでのpathが意味するのは、http://127.0.0.0:8000へのリクエストはviews.pyのindex関数を見に行ってください、という意味になります。<br><br>
+
+                        name=’index’は、このviews.indexの名前だと思ってください。<br><br>
+                        
+                        次にfiveディレクトリ（アプリケーションディレクトリ）内のviews.pyを開いてください。ここにurls.pyから託されたリクエストを処理するindex関数を定義します。
+                    </p>
+                    <p class="programming">
+                        from django.shortcuts import render
+                        def index(request):
+                            return render(request, 'five/index.html', {})
+                    </p>
+                    <p>
+                        これでやっと、http://127.0.0.0:8000のリクエストに対するレスポンスindex.htmlの道筋ができあがりました。<br><br>
+
+                        最後に表示するindex.htmlを作成しましょう。<br><br>
+                        
+                        まずディレクトリtemplatesをfiveディレクトリ（アプリケーションディレクトリ）直下に作成してください。<br>
+                        そしてそのtemplatesディレクトリ内にfiveフォルダを作り、その中にindex.htmlを作成します。
+                    </p>
+                    <img class="webimg" src="{% static 'img/webapplication06.png' %}" alt="img">
+                    <p>
+                        例として上記のようなindex.htmlを作ってみてください。<br>
+                        そしてhttp://127.0.0.0:8000にアクセスすると、index.htmlが表示したはずです。<br><br>
+
+                        このようにDjangoでは、views.pyを通してテンプレートという仕組みを使ってHTMLを生成し、Webページを表示させています。<br>
+                        テンプレートの仕組みについては以下記事をご参照ください。
+                    </p>
+                    <h2>
+                        まとめ
+                    </h2>
+                    <p>
+                        とても長くなりましたが、これでDjangoによるWebサイト開発の第一歩ができました。<br><br>
+
+                        ここからサイトを大きくしていき、cssやJavaScript、jQueryを適応させたり、データベースを使ってみたりとやれることはまだまだたくさんあります。
+                        
+                    </p><br>
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

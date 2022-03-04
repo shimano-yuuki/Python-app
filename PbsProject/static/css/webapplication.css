@@ -1,0 +1,35 @@
+.webapplication__page__container__outside{
+    margin-left: 299px;
+    width: 799px;
+    height: 100%;
+    background-color: #FFFFFF;
+}
+
+.webapplication__page__container{
+    width: 725px;
+    margin-left: 36px;
+    height: 100%;
+}
+
+.webapplication__title__wrapper{
+    height: 207px;
+    
+}
+
+.webapplication__title{
+    
+    width: 334px;
+    transform: translate(0px,116px);
+    border: 3px double #0000ff;
+}
+.point{
+    padding: 25px;
+    border: 3px solid #F87B84;
+}
+.programming{
+    padding: 25px;
+    border: 3px solid #575757;
+}
+.webimg{
+    width: 727px;
+}

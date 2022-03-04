@@ -1,0 +1,23 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block csslink %}
+<link rel="stylesheet" href="{% static 'css/explanation.css' %}">
+{% endblock %}
+{% block content %}
+<main class="explanation__page__main">
+    <div class="explanation__page__container">
+        <div class="explanation__title__wrapper">
+            <h1 class="explanation__title">
+                このサイトについて
+            </h1>
+        </div>
+        <div class="explanation__contents__wrapper">
+            <p class="explanation__contents">
+                本サイト、Python for Beginners略して、PBS　は初学者の方が誰でも気軽<br><br>
+                にPythonを学べるサイトになっている。本ページを通してPythonを学んで頂け<br><br>
+                るとサイト製作者としては非常に嬉しい。
+            </p>
+        </div>
+    </div>
+</main>
+{% endblock %}

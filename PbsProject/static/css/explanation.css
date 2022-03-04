@@ -1,0 +1,27 @@
+.explanation__page__main{
+    width: auto;
+    height: 770px;
+}
+.explanation__title__wrapper{
+    position: absolute;
+    top: 22%;
+    right: 33%;
+}
+
+.explanation__title{
+    font-size: 55px;
+    color: #FFFFFF;
+}
+
+.explanation__contents__wrapper{
+    position: absolute;
+    left: 141px;
+    top: 399px;
+}
+
+
+.explanation__contents{
+    width: 1200px;
+    font-size: 33px;
+    color: #FFFFFF;
+}

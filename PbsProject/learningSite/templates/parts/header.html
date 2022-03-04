@@ -1,0 +1,31 @@
+{% load static %}
+<header class="header">   
+    <div class="header__logo">
+        <img src="{% static 'img/Python for Beginners.svg' %}">
+    </div>
+    <nav class="header__list">
+        <a href="{% url 'learningSite:index' %}" class="header-list-home">
+            <p class="home">ホーム</p>
+        </a>
+        <a href="{% url 'learningSite:python' %}" class="header__list-menu">
+            <p class="mozi">Pythonとは</p>
+        </a>
+        <a href="{% url 'learningSite:list' %}" class="header__list-menu">
+            <p class="mozi">授業一覧</p>
+        </a>
+        <a href="{% url 'learningSite:explanation' %}" class="header__list-menu">
+            <p class="mozi">このサイトについて</p>
+        </a>
+    </nav>
+    <div class="header__snsicon">
+        <a href="">
+            <img src="{% static 'img/Twitter.svg' %}">
+        </a>
+        <a href="">
+            <img src="{% static 'img/Instagram.svg' %}">
+        </a>
+        <a href="">
+            <img src="{% static 'img/Facebook.svg' %}">
+        </a>    
+    </div>
+</header>

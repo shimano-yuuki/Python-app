@@ -1,0 +1,41 @@
+.conditionalbranch__page__container__outside{
+    margin-left: 299px;
+    width: 799px;
+    height: 100%;
+    background-color: #FFFFFF;
+}
+
+.conditionalbranch__page__container{
+    width: 725px;
+    margin-left: 36px;
+    height: 100%;
+}
+
+.conditionalbranch__title__wrapper{
+    height: 207px;
+    
+}
+
+.conditionalbranch__title{
+    
+    width: 129px;
+    transform: translate(0px,116px);
+    border: 3px double #0000ff;
+}
+
+.programming{
+    padding: 25px;
+    border: 3px solid #575757;
+}
+
+table {
+    border-collapse: collapse;
+}
+table th {
+    background:#6A79E6;
+    padding: 10px;/*上下左右10pxずつ*/
+}
+
+table td {
+    padding: 3px 10px;/*上下3pxで左右10px*/
+}

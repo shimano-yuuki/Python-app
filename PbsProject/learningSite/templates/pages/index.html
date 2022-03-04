@@ -1,0 +1,37 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block csslink %}
+<!-- 下のCSSが優先されて、このページだけ背景が変わる -->
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+{% block content %}
+
+<main  class="top__page__main">
+    <div class="top__page__container">
+        <div class="main__logo__wrapper">
+            <img class="main__logo__wrapper__img" src="{% static 'img/Python for Beginners.svg' %}" alt="img">
+        </div>
+        <div class="top__sub__title__container">
+            <div class="top__sub__title__wrapper">
+                <p class="top__sub__title">
+                    初学者向けPython学習サイト
+                </p>
+            </div>
+        </div>
+        <div class="top__learn__more__button">
+            <div class="top__learn__more__image__wrapper">
+                <img class="top__learn__more__image" src="{% static 'img/LearnMore.png' %}" alt="image">
+            </div>
+            
+            <div class=>
+                <div class="top__line__wrapper">
+                    <img class="top__line" src="{% static 'img/arrow.png' %}" alt="image">
+                </div>
+                <a class="top__circle__wrapper" href="{% url 'learningSite:list' %}" >
+                    <div class="top__circle"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

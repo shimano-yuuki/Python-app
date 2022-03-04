@@ -1,0 +1,111 @@
+/* ルール
+wrapperがその物自体の移動でそのwrapperの中身が、その物体の大きさや、形など、
+文字ならフォントなどもそこに含まれる。 */
+
+@charset "utf-8";
+
+body{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url(../img/others.png);
+    width: 100%;
+    height: 100%;
+}
+
+html{
+    width: 100%;
+    height: 100%;
+}
+
+.top__page__main {
+    min-height: 820px;
+}
+
+.main__logo__wrapper {
+    position: absolute;
+    top: 20%;
+    right: 10%;
+}
+
+.main__logo__wrapper__img{
+    width: 600px;
+    height: 150px;
+}
+
+.top__sub__title__wrapper {
+    position: absolute;
+    top: 35%;
+    right: 15%;
+}
+.top__sub__title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+.top__learn__more__image__wrapper {
+    position: absolute;
+    top: 47.5%;
+    right: 33%;
+}
+.top__learn__more__image{
+    width: 250px;
+    height: 60px;
+}
+.top__line__wrapper{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    left: 72%;
+}
+
+.top__line{
+    width: 171px;
+    height: 30px;
+
+}
+.top__circle__wrapper{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 49%;
+    left: 80%;
+
+}
+.top__circle{
+    width: 50px;
+    height:50px;
+    border-radius: 50%;
+
+    /* この border: solid が円を作る記述 */
+    border: solid 3px #ffffff;
+}
+
+.top__circle:hover{  
+    width: 50px;
+    height:50px;
+    border-radius: 50%;
+    border: solid 3px #ffffff;
+
+    font-size:36px;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+  
+    
+    animation-name:circle;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+}
+
+/* キームレームを指定することで丸が広がる動作を記述 */
+@keyframes circle{
+  0%{
+    transform: scale(1);    
+  }
+  100%{
+    transform: scale(2);    
+  }
+}

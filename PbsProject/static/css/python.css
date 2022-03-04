@@ -1,0 +1,42 @@
+.python__page__logo__wrapper{
+    position: absolute;
+    top: 16%;
+    right: 40%;
+}
+
+.python__page__main{
+    width: auto;
+    height: 1788px;
+    
+}
+
+.python__page__logo{
+    width: 312px;
+    height: 98px;
+}
+
+.python__title__wrapper{
+    position: absolute;
+    top: 31%;
+    right: 40%;
+}
+
+.python__title{
+    font-size: 55px;
+    color: #FFFFFF;
+}
+
+.python__contents__wrapper{
+    position: absolute;
+    left: 141px;
+    top: 399px;
+}
+
+
+.python__contents{
+    width: 1200px;
+    font-size: 33px;
+    color: #FFFFFF;
+}
+
+

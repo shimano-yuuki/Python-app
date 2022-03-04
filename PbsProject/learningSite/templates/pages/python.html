@@ -1,0 +1,51 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block csslink %}
+<link rel="stylesheet" href="{% static 'css/python.css' %}">
+{% endblock %}
+{% block content %}
+<main  class="python__page__main">
+    <div class="python__page__container">
+        <div class="python__page__logo__wrapper">
+            <img  class="python__page__logo" src="{% static 'img/Pythonlogo.png' %}" alt="img">
+        </div>
+        <div class="python__title__wrapper">
+            <h1 class="python__title">
+                Pythonとは
+            </h1>
+        </div>
+        <div class="python__contents__wrapper">
+            <p class="python__contents">
+                最新バージョンはPython3<br><br>
+
+                Python2と3が併用されている<br><br>
+
+                Pythonの名前の由来<br><br>
+
+                Pythonは文法が工夫されていて、習得しやすく、簡潔なプログラミングが書ける<br><br>
+
+                モジュールやパッケージを使って、色々な機能を呼び出せる<br><br>
+
+                適切なライブラリを選択すれば、高速な処理も可能<br><br>
+
+                標準のPython処理系はPythonと呼ばれている<br><br>
+
+                Pythonには64ビット版と32ビット版がある<br><br>
+
+                コマンドプロンプトで「python-V」とすると、<br><br>
+
+                Pythonのバージョンが確認できる<br><br>
+
+                AnacondaにはPythonの処理に加えて、環境開発<br><br>
+
+                ツールのcodaと、各種のライブラリが含まれている<br><br>
+
+                Condaを使うと、Pythonの環境を複数作成し、切り替えるて使うことができる<br><br>
+
+                Anacondaプロンプトという、専用のコマンドプロンプトが用意されている<br><br>
+
+            </p>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,35 @@
+.list__page__main{
+    width: auto;
+    height: 1205px;
+}
+.list__title__wrapper{
+    position: absolute;
+    top: 22%;
+    right: 42%;
+}
+
+.list__title{
+    font-size: 55px;
+    color: #FFFFFF;
+}
+
+.list__contents__wrapper{
+    position: absolute;
+    left: 43%;
+    top: 49%;
+}
+
+
+.list__contents{
+    width: 405px;
+    font-size: 38px;
+    color: #FFFFFF;
+}
+
+.list__contents__item{
+    color: #FFFFFF;
+}
+
+.list__contents__item:hover{
+    color:blue;
+}

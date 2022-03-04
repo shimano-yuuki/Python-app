@@ -1,0 +1,355 @@
+
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block csslink %}
+<link rel="stylesheet" href="{% static 'css/datatype.css' %}">
+{% endblock %}
+{% block content %}
+<main class="data__page__main">
+    <div class="data__page__container__outside">
+        <div class="data__page__container">
+            <div class="data__title__wrapper">
+                <h1 class="data__title">
+                    データ型
+                </h1>
+            </div>
+            <div class="data__subtitle__wrapper">
+                <h2 class="data__subtitle"> 
+                    Pythonにおけるデータ型の定義(指定)方法
+                </h2>
+            </div>
+            <div class="data__contents__wrapper">
+                <p>
+                    変数名を付けた後に、通常は代入という変数に対して値を設定する処理をします。Pythonでは、<br>
+                    その際に代入した値によって変数のデータ型（数値、文字列など、どのようなタイプのデータか）<br>
+                    が決まります。<br>
+                    例えば変数testに対して文字列'abc'を代入すると、
+                </p>
+                <img src="{% static 'img/python-datatype01.png' %}" alt="">
+                <p>
+                    変数testのデータ型はstr（文字列）になり、
+                </p>
+                <img src="{% static 'img/python-datatype02.png' %}" alt="">
+                <p>
+                    一方で、変数testに対して整数6を代入すると、
+                </p>
+                <img src="{% static 'img/python-datatype03.png' %}" alt="">
+                <p>
+                    変数testのデータ型はint（整数）になります。
+                </p>
+                <img src="{% static 'img/python-datatype04.png' %}" alt="">
+                <h2 class="data__subtitle">
+                    Pythonにおけるデータ型の種類一覧
+                </h2>
+                <p>
+                    Pythonの主なデータ型は以下になります。
+                </p>
+                <br>
+                <img class = "data__table" src="{% static 'img/data-table.png' %}" alt="">
+                <img class = "data__table2" src="{% static 'img/data-table2.png' %}" alt="">
+                <h2 class="data__subtitle">
+                    Pythonにおけるデータ型の確認方法
+                </h2>
+                <p>
+                    データ型を調べる時は、type()を利用します。
+                </p>
+                <h3 class="data__minimini__title">
+                    type(オブジェクト)
+                </h3>
+                <p>
+                    type()は、引数に指定した変数などのオブジェクトのデータ型を返します。例えば、変数testに<br>
+                    対して文字列'abc'を代入し、type()で変数testのデータ型を確認すると、以下のようにstr（文字列）<br>
+                    が返ってきます。
+                </p>
+                <div class="data__code">
+                    test = "abc"<br>
+                    type(test)
+                </div>
+                <div class="data__code">
+                    str
+                </div>
+                <p>同様に、変数testに対して浮動小数点3.14を代入し、type()で変数testのデータ型を確認すると、以下のようにfloat（浮動小数点）型が返ってきます。</p>
+                <div class="data__code">
+                    test = 3.14 <br>
+                    type(test)
+                </div>
+                <div class="data__code">
+                    float
+                </div>
+                <h2 class="data__subtitle">
+                    Pythonでのデータ型の変換方法
+                </h2>
+                <h3 class="data__minimini__title">
+                    整数int型から文字列str型への変換
+                </h3>
+                <p>
+                    数値から文字列型への変換には、str()を利用します。
+                </p>
+                <div class="data__code">
+                    str(数値)
+                </div>
+                <p>
+                    引数の数値には、整数int型や浮動小数点float型を指定することができます。そして、str()は、引数に指定した数値を文字列に変換し返します。例として、整数30を文字列’30’に変換してみましょう。
+                    変数num1に対して整数30を代入し、type()で変数num1のデータ型を確認すると、int（整数）型が返ってきます。
+                </p>
+                <div class="data__code">
+                    num1 = 30 <br>
+                    type(num1)
+                </div>
+                <div class="data__code">
+                    int
+                </div>
+                <p>
+                    この変数num1をstr()に渡すと、’30’と’（シングルクォーテーション）で囲まれ、文字列に変換されて表示されました。
+                </p>
+                <div class="data__code">
+                    str(num1)
+                </div>
+                <div class="data__code">
+                    '30'
+                </div>
+                <p>
+                    実際にtype()でデータ型を確認すると、str（文字列）型に変換されていることがわかります。
+                </p>
+                <div class="data__code">
+                    type(str(num1))
+                </div>
+                <div class="data__code">
+                    str
+                </div>
+                <h3 class="data__minimini__title">
+                    浮動小数点float型から文字列str型への変換
+                </h3>
+                <p>
+                    浮動小数点も整数と同様に文字列型への変換には、str()を利用します。例として、浮動小数点30.45を文字列’30.45’に変換します。変数num2に対して浮動小数点30.45を代入し、type()で変数num2のデータ型を確認すると、float（浮動小数点）型が返ってきます。
+                </p>
+                <div class="data__code">
+                    num2 = 30.45 <br>
+                    type(num2)
+                </div>
+                <div class="data__code">
+                    float
+                </div>
+                <p>
+                    この変数num2をstr()に渡すと、’30.45’と文字列に変換されて表示されました。
+                </p>
+                <div class="data__code">
+                    str(num2)
+                </div>
+                <div class="data__code">
+                    '30.45'
+                </div>
+                <p>
+                    type()でデータ型を確認すると、str（文字列）型に変換されていることがわかります。
+                </p>
+                <div class="data__code">
+                    type(str(num2))
+                </div>
+                <div class="data__code">
+                    str
+                </div>
+                <h3 class="data__minimini__title">
+                    文字列str型から整数int型への変換
+                </h3>
+                <p>
+                    文字列からint（整数）型への変換には、int()を利用します。
+                </p>
+                <div class="data__code">
+                    int(文字列)
+                </div>
+                <p>
+                    引数の文字列には、int型になり得る文字列を指定します。そして、int()は、引数に指定した文字列をint型に変換し返します。例として、文字列’34’を整数34に変換してみましょう。
+                    変数str1に対して文字列’34’を代入し、type()で変数str1のデータ型を確認すると、str（文字列）型が返ってきます。                    
+                </p>
+                <div class="data__code">
+                    str1 = ‘34’ <br>
+                    type(str1)
+                </div>
+                <div class="data__code">
+                    str
+                </div>
+                <p>
+                    この変数str1をint()に渡すと、34と’（シングルクォーテーション）が無くなり、整数に変換されて表示されました。
+                </p>
+                <div class="data__code">
+                    int(str1)
+                </div>
+                <div class="data__code">
+                    34
+                </div>
+                <p>
+                    実際にtype()でデータ型を確認すると、int（整数）型に変換されていることがわかります。
+                </p>
+                <div class="data__code">
+                    type(int(str1))
+                </div>
+                <div class="data__code">
+                    int
+                </div>
+                <h3 class="data__minimini__title">
+                    文字列str型から浮動小数点float型への変換
+                </h3>
+                <p>
+                    文字列からfloat（浮動小数点）型への変換には、float()を利用します。
+                </p>
+                <div class="data__code">
+                    float(文字列)
+                </div>
+                <p>
+                    引数の文字列には、int型になり得る文字列を指定します。そして、int()は、引数に指定した文字列をint型に変換し返します。例として、文字列’34’を整数34に変換してみましょう。
+                    変数str1に対して文字列’34’を代入し、type()で変数str1のデータ型を確認すると、str（文字列）型が返ってきます。
+                </p>
+                <div class="data__code">
+                    str1 = ‘34’ <br>
+                    type(str1)
+                </div>
+                <div class="data__code">
+                    str
+                </div>
+                <p>
+                    この変数str1をint()に渡すと、34と’（シングルクォーテーション）が無くなり、整数に変換されて表示されました。
+                </p>
+                <div class="data__code">
+                    int(str1)
+                </div>
+                <div class="data__code">
+                    34
+                </div>
+                <p>
+                    実際にtype()でデータ型を確認すると、int（整数）型に変換されていることがわかります。
+                </p>
+                <div class="data__code">
+                    type(int(str1)
+                </div>
+                <div class="data__code">
+                    int
+                </div>
+                <h3 class="data__minimini__title">
+                    文字列str型から浮動小数点float型への変換
+                </h3>
+                <p>
+                    文字列からfloat（浮動小数点）型への変換には、float()を利用します。
+                </p>
+                <div class="data__code">
+                    float(文字列)
+                </div>
+                <p>
+                    引数の文字列には、float型になり得る文字列を指定します。そして、float()は、引数に指定した文字列をfloat型に変換し返します。例として、文字列’32.18’を浮動小数点32.18に変換してみましょう。
+                    変数str2に対して文字列’32.18’を代入し、type()で変数str2のデータ型を確認すると、str（文字列）型が返ってきます。
+                </p>
+                <div class="data__code">
+                    str2 = ’32.18’ <br>
+                    type(str2)
+                </div>
+                <div class="data__code">
+                    str
+                </div>
+                <p>
+                この変数str2をfloat()に渡すと、32.18と’（シングルクォーテーション）が無くなり、浮動小数点に変換されて表示されました。
+                </p>
+                <div class="data__code">
+                    float(str2)
+                </div>
+                <div class="data__code">
+                    32.18
+                </div>
+                <p>
+                    実際にtype()でデータ型を確認すると、float（浮動小数点）型に変換されていることがわかります。
+                </p>
+                <div class="data__code">
+                    type(float(str2))
+                </div>
+                <div class="data__code">
+                    float
+                </div>
+                <h3 class="data__minimini__title">
+                    日付datetime型から文字列str型への変換
+                </h3>
+                <p>
+                    datatime（日付）型から文字列への変換には、strftimeを利用します。
+                </p>
+                <div class="data__code">
+                    datetime.strftime (フォーマット)
+                </div>
+                <p>
+                    strftimeでは、datetimeで指定された日付を引数のフォーマットで文字列型に変換し返します。例として、日付2020/1/31 12:36:45を文字列'2020/01/31 12:36:45'に変換してみましょう。まずはdatetimeをインポートします。そして、datetime.datetime()に対して、引数として、年、月、日、時、分、秒を渡し、変数date1に格納します。変数date1の内容を確認します。
+                </p>
+                <div class="data__code">
+                    import datetime <br>
+                    date1 = datetime.datetime(2020,1,31,12,36,45) <br>
+                    date1
+                </div>
+                <div class="data__code">
+                    datetime.datetime(2020, 1, 31, 12, 36, 45)
+                </div>
+                <p>
+                    datetime.datetime()と日付型でデータが表示されました。
+                    さらにtype()で変数date1のデータ型を確認すると、datetime.datetimeと表示され、日付型でデータが格納されていることがわかります。
+                </p>
+                <div class="data__code">
+                    type(date1)
+                </div>
+                <div class="data__code">
+                    datetime.datetime
+                </div>
+                <p>
+                    この変数date1をstrftime()で文字列に変換します。その際にフォーマットとして"%Y/%m/%d %H:%M:%S"を指定します。
+                </p>
+                <div class="data__code">
+                    date1.strftime("%Y/%m/%d %H:%M:%S")
+                </div>
+                <div class="data__code">
+                    '2020/01/31 12:36:45'
+                </div>
+                <p>
+                    すると、先ほどの日付型のデータが'2020/01/31 12:36:45'と文字列に変換されて表示されました。type()でデータ型を確認すると、strと表示され、文字列型になっていることがわかります。
+                </p>
+                <div class="data__code">
+                    type(date1.strftime("%Y/%m/%d %H:%M:%S"))
+                </div>
+                <div class="data__code">
+                    str
+                </div>
+                <h3 class="data__minimini__title">
+                    文字列str型から日付datetime型への変換
+                </h3>
+                <p>
+                    文字列からdatatime（日付）型への変換には、strptimeを利用します。
+                </p>
+                <div class="data__code">
+                    datetime.strptime (文字列, フォーマット)
+                </div>
+                <p>
+                    strptimeでは、最初の引数で指定された日付形式の文字列をdatetime型に変換します。もう１つの引数は、日付形式の文字列のフォーマットを指定します。例として、今度は、文字列'2020/01/31 12:36:45'を日付型の2020/1/31 12:36:45に変換してみましょう。
+                    変数str1に日付の形式で文字列を格納します。さらにtype()で変数str1のデータ型を確認すると、strと表示され、文字列型でデータが格納されていることがわかります。
+                </p>
+                <div class="data__code">
+                    str1 = '2020/01/31 12:36:45'<br>
+                    type(str1)
+                </div>
+                <div class="data__code">
+                    str
+                </div>
+                <p>
+                    この変数str1をstrptime()で日付型に変換します。その際にフォーマットとして"%Y/%m/%d %H:%M:%S"を指定します。
+                </p>
+                <div class="data__code">
+                    datetime.datetime.strptime(str1, '%Y/%m/%d %H:%M:%S')
+                </div>
+                <div class="data__code">
+                    datetime.datetime(2020, 1, 31, 12, 36, 45)
+                </div>
+                <p>
+                    先ほどの文字列型のデータが日付型に変換されて表示されました。type()でデータ型を確認すると、datetime.datetimeと表示され、日付型になっていることがわかります。
+                </p>
+                <div class="data__code">
+                    type(datetime.datetime.strptime(str1, '%Y/%m/%d %H:%M:%S'))
+                </div>
+                <div class="data__code">
+                    datetime.datetime
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

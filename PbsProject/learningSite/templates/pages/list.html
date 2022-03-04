@@ -1,0 +1,25 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block csslink %}
+<link rel="stylesheet" href="{% static 'css/list.css' %}">
+{% endblock %}
+{% block content %}
+<main class="list__page__main">
+    <div class="list__page__container">
+        <div class="list__title__wrapper">
+            <h1 class="list__title">
+                授業一覧
+            </h1>
+        </div>
+        <div class="list__contents__wrapper">
+            <p class="list__contents">
+                <a class="list__contents__item" href="{% url 'learningSite:datatype' %}">データ型</a><br><br><br>
+                <a class="list__contents__item" href="{% url 'learningSite:databox' %}">データの入れ物</a><br><br><br>
+                <a class="list__contents__item" href="{% url 'learningSite:conditionalbranch' %}">条件分岐</a><br><br><br>
+                <a class="list__contents__item" href="{% url 'learningSite:function' %}">関数</a><br><br><br>
+                <a class="list__contents__item" href="{% url 'learningSite:webapplication' %}">webアプリケーション</a><br><br><br>
+            </p>
+        </div>
+    </div>
+</main>
+{% endblock %}

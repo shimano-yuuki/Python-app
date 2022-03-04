@@ -1,0 +1,51 @@
+.main__top{
+    margin-left: 299px;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.data__page__container__outside{
+    margin-left: 299px;
+    width: 799px;
+    height: 100%;
+    background-color: #FFFFFF;
+}
+
+.data__page__container{
+    width: 725px;
+    margin-left: 36px;
+    height: 100%;
+}
+
+.data__title__wrapper{
+    height: 207px;
+    
+}
+
+.data__title{
+    
+    width: 130px;
+    transform: translate(0px,116px);
+    border: 3px double #0000ff;
+}
+
+.data__table{
+    width: 719px;
+}
+
+.data__table2{
+    width: 719px;
+}
+
+.data__subtitle{
+    color: blue;
+}
+
+.data__minimini__title{
+    color: red;
+}
+
+.data__code{
+    font-weight: bold;
+}

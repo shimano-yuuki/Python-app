@@ -1,0 +1,259 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block csslink %}
+<link rel="stylesheet" href="{% static 'css/function.css' %}">
+{% endblock %}
+{% block content %}
+<main class="function__page__main">
+    <div class="function__page__container__outside">
+        <div class="function__page__container">
+            <div class="function__title__wrapper">
+                <h1 class="function__title">
+                    関数
+                </h1>
+            </div>
+            <div class="function__contents__wrapper">
+                <p class="function__contents">
+                    <h1>
+                        関数の定義
+                    </h1>
+                    <h2 class="programming">
+                        太郎くんは、一つ100円のももを5つ、一つ40円のみかんを8つ買いました。全部でいくらになったでしょう？ 
+                    </h2>
+                    <p>
+                        れんしゅうもんだい では、こんな計算問題をやってもらいました。太郎くんは、一つ100円のももを5つ、一つ40円のみかんを8つ買いました。全部でいくらになったでしょう？ 復習を兼ねて、この問題を改造してみましょう。ももを5つ、みかんを８つのように決まった数だけ買うのではなく、個数をキーボードから入力できるようにしてみます。キーボードから文字を入力するときは、input() 関数 を使います。
+                    </p>
+                    <h2>
+                        1.キーボードから、購入するももの個数を入力します。
+                        2.キーボードから、購入するみかんの個数を入力します。
+                        3.ももを一つ100円、みかんを一つ40円として、合計金額を出力します。
+                    </h2>
+                    <p>
+                        この処理は次の手順で実行できます。
+                    </p>
+                    <p>
+                        1.まず、ももの個数をinput()関数で入力します。input()関数の戻り値は文字列ですので、そのままでは金額の計算ができません。int()を使って、整数に変換し、変数 num_momo に代入しておきます。int() の使い方を忘れてしまった方は、文字列の数値化 を参照してください。
+                    </p>
+                    <p>
+                        2.同様に、input() でみかんの個数を入力し、 int() で整数に変換して変数 num_mikanに代入します。
+                    </p>
+                    <p>
+                        3.ももの個数とみかんの個数から合計金額を計算し、変数 total に代入します。
+                    </p>
+                    <p>
+                        4.計算した結果を出力します。
+                    </p>
+                    <p>
+                        この手順通りに、Pythonの処理を書いてみましょう。
+                    </p>
+                    <p class="programming">
+                        momo = input("ももは何個買いますか？")  # ももの個数を入力する <br>
+                        num_momo = int(momo) # 入力した文字列を、整数値に変換する<br><br>
+
+                        mikan = input("みかんは何個買いますか？") # みかんの個数を入力する<br>
+                        num_mikan = int(mikan) # 入力した文字列を、整数値に変換する<br><br>
+
+                        total_momo = num_momo * 100<br>
+                        total_mikan = num_mikan * 40<br>
+                        total = total_momo + total_mikan<br><br>
+
+                        print("もも", num_momo, "個と、みかん", num_mikan, "個で、", total, "円です")
+                    </p>
+                    <br>
+                    <p class="programming">
+                        ももは何個買いますか？ 10 <br>
+                        みかんは何個買いますか？ 20
+                    </p>
+                    <p>
+                        もも 10 個と、みかん 20 個で、 1800 円です
+                    </p>
+                    <br>
+                    <h2>
+                        独自に関数を作る
+                    </h2>
+                    <p>
+                        関数 では、Pythonに標準で用意されている関数の使い方を紹介しました。<br>
+                        例えば、abs() 関数 は、数値を引数 として指定すると、その絶対値を返す関数でした。次の例は、引数に -100 を指定して abs() を呼び出し、結果として -100 の絶対値 100 が返ってきています。
+                    </p>
+                    <p class="programming">
+                        abs(-100)
+                    </p>
+                    <p>
+                        100
+                    </p>
+                    <br>
+                    <p>
+                        このような関数は、用意されたものを使うだけではなく、自分でも必要な関数を作れるようになっています。ここでは、例として、上記の 3. の部分に相当する、「ももとみかんの個数から合計金額を計算する関数」を作ってみましょう。「ももとみかんの個数から合計金額を計算する関数」は、ももとみかんの数を 引数 として指定すると、合計金額を計算して返します。関数の名前は、fruit_price としましょう。例えば、ももを10個、みかんを20個買うときには、ももの数とみかんの数をそれぞれ指定して
+                    </p>
+                    <p class="programming">
+                        fruit_price(10, 20)
+                    </p>
+                    <p>
+                        と書くようにしましょう。fruit_price(10, 20) の結果は、もも10個とみかん20個の値段ですから、10*100 + 20*40 で 1800 になります。
+                    </p>
+                    <h3>
+                        関数の定義
+                    </h3>
+                    <p>
+                        fruit_price() のような関数を作ることを、プログラミング用語ではよく「関数を 定義する」といいます。
+                    </p>
+                    <p>
+                        関数の定義は、次の形式で記述します。
+                    </p>
+                    <p class="programming">
+                        def 関数名(引数名1, 引数名2, ...): <br>
+                        処理1<br>
+                        処理2<br>
+                        ...
+                    </p>
+                    <p>
+                        関数定義は def 関数名(引数名1, 引数名2, ...): という行ではじまります。def という単語は、英語の define (定義) の略です。関数名 には関数の名前を指定します。ここで作る関数の名前は、関数の名前は、fruit_price でしたね。引数名1、引数名2、... には、関数に指定する引数の名前を指定します。この関数には、引数として もも と みかん の数を指定しますから、ももの数は number_of_momo、みかんの数は number_of_mikan という名前にしましょう。
+                    </p>
+                    <p>
+                        この関数の最初の一行は、次のようになります。
+                    </p>
+                    <p class="programming">
+                        def fruit_price(number_of_momo, number_of_mikan): <br>
+                        ...
+                    </p>
+                    <h3>
+                        関数本体
+                    </h3>
+                    <p>
+                        def 文に続いて、関数が呼び出されたときに実行する処理を記述します。この処理は、行の先頭にスペース４文字で インデント して記述します。
+                    </p>
+                    <p class="programming">
+                        def 関数名(引数名1, 引数名2, ...): <br>
+                        &nbsp;処理<br>
+                        ^^^^<br>
+                        スペースを4文字入力
+                    </p>
+                    <p>
+                        関数の処理として、ももとみかんの値段を計算する処理を書きましょう。引数として指定されたももの数と、みかんの数は、それぞれ変数 number_of_momo と number_of_mikan として参照できます。たとえば、ももを30個、みかんを40個の値段を計算するときは、この関数を
+                    </p>
+                    <p class="programming">
+                        fruit_price(30, 40)
+                    </p>
+                    <p>
+                        のように指定します。このとき、変数 number_of_momo の値は 30、number_of_mikan の値は 40 となります。これを利用して、まず fruit_price() に ももの個数 * ももの値段 を計算する処理を書いてみましょう。
+                    </p>
+                    <p class="programming">
+                        def fruit_price(number_of_momo, number_of_mikan): <br>
+                        &nbsp; &nbsp;total_momo = number_of_momo * 100
+                    </p>
+                    <p>
+                        number_of_momo がももの個数ですから、ももの個数 * ももの値段 は number_of_momo * 100 となります。その結果を、変数 total_momo に代入しています。
+                        同様に、引数として指定されたみかんの個数 number_of_mikan を使って、みかんの個数 * みかんの値段 を計算する処理を追加しましょう。結果は、変数 total_mikan に代入しています。
+                    </p>
+                    <p class="programming">
+                        def fruit_price(number_of_momo, number_of_mikan): <br>
+                        &nbsp; &nbsp;total_momo = number_of_momo * 100<br>
+                        &nbsp; &nbsp;total_mikan = number_of_mikan * 40    
+                    </p>
+                    <p>
+                        最後に、計算したももの金額とみかんの金額を加算して、合計金額を求めましょう。合計金額は、変数 total に代入します。
+                    </p>
+                    <p class="programming">
+                        def fruit_price(number_of_momo, number_of_mikan): <br>
+                        &nbsp; &nbsp;total_momo = number_of_momo * 100<br>
+                        &nbsp; &nbsp;total_mikan = number_of_mikan * 40<br>
+                        &nbsp; &nbsp;total = total_momo + total_mikan
+                    </p>
+                    <p>
+                        関数の中で、ももの個数 * ももの値段 と みかんの個数 * みかんの値段 を計算し、その和を変数 total に代入しています。
+                    </p>
+                    <h3>
+                        関数の戻り値
+                    </h3>
+                    <p>
+                        ここまでで、必要な計算は全て行いました。実際に関数を呼び出してみましょう。
+                    </p>
+                    <p class="programming">
+                        def fruit_price(number_of_momo, number_of_mikan):<br>
+                        &nbsp; &nbsp;total_momo = number_of_momo * 100<br>
+                        &nbsp; &nbsp;total_mikan = number_of_mikan * 40<br>
+                        &nbsp; &nbsp;total = total_momo + total_mikan <br><br>
+                        fruit_price(10, 20)
+                    </p>
+                    <p>
+                        関数 fruit_price(10, 20) を呼び出して、計算は正常に行われましたが、結果がなにも表示されませんね。abs() を呼び出したときは、その結果が表示されていました。
+                    </p>
+                    <p class="programming">
+                        abs(200)
+                    </p>
+                    <p>
+                        200
+                    </p>
+                    <br>
+                    <p>
+                        fruit_price() で値段を計算した結果は、変数 total に代入されています。これで値段の計算はできましたが、このままではせっかく計算した値段はそのまま捨てられてしまいます。abs() のように、関数で計算した結果を返すには、return 文を使って、結果となる値を指定します。
+                    </p>
+                    <h3>
+                        return文
+                    </h3>
+                    <p>
+                        関数を実行し、結果として返す値のことを、戻り値 や 返り値 などと呼びます。関数の戻り値は、return 文で指定します。次の例では、計算したももとみかんの値段である変数 total を戻り値として、return 文に指定しています。
+                    </p>
+                    <p class="programming">
+                        def fruit_price(number_of_momo, number_of_mikan): <br>
+                        &nbsp; &nbsp;# ももとみかんの合計金額を計算する<br><br>
+
+                        &nbsp; &nbsp;total_momo = number_of_momo * 100<br>
+                        &nbsp; &nbsp;total_mikan = number_of_mikan * 40<br>
+                        &nbsp; &nbsp;total = total_momo + total_mikan<br><br>
+                        
+                        &nbsp; &nbsp;return total
+                    </p>
+                    <p>
+                        return 文は、次の形式で記述します。
+                    </p>
+                    <p class="programming">
+                        return 値
+                    </p>
+                    <p>
+                        return 文を実行すると、指定した 値 を関数の戻り値に設定して、関数の実行を終了します。return 文より後ろの処理は、実行されません。
+                    </p>
+                    <h2>
+                        関数の呼び出し
+                    </h2>
+                    <p>
+                        これで関数 fruit_price(number_of_momo, number_of_mikan) が完成しました。つぎのようにして、呼び出してみましょう。
+                    </p>
+                    <p class="programming">
+                        # <br>
+                        関数の定義<br><br>
+
+                        def fruit_price(number_of_momo, number_of_mikan):<br>
+                        &nbsp; &nbsp;# ももとみかんの合計金額を計算する<br><br>
+
+                        &nbsp; &nbsp;total_momo = number_of_momo * 100<br>
+                        &nbsp; &nbsp;total_mikan = number_of_mikan * 40<br>
+                        &nbsp; &nbsp;total = total_momo + total_mikan<br>
+                        &nbsp; &nbsp;return total<br><br>
+
+
+                        # もも5個、みかん10個の値段を計算<br>
+                        total = fruit_price(5, 10)<br>
+                        print("もも 5個と、みかん 10個で、", total, "円です")
+                    </p>
+                    <p>
+                        もも 5個と、みかん 10個で、 900 円です
+                    </p>
+                    <br>
+                    <p>
+                        変数とおなじように、定義した関数は別のセルでも利用できます。別の条件で fruit_price() を呼び出してみましょう。
+                    </p>
+                    <p class="programming">
+                        # もも100個、みかん200個の値段を計算 <br>
+                        total = fruit_price(100, 200)<br>
+                        print("もも 100個と、みかん 200個で、", total, "円です")
+                    </p>
+                    <p>
+                        もも 100個と、みかん 200個で、 18000 円です
+                    </p>
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

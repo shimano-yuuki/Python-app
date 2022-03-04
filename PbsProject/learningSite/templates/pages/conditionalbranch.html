@@ -1,0 +1,320 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block csslink %}
+<link rel="stylesheet" href="{% static 'css/conditionalbranch.css' %}">
+{% endblock %}
+{% block content %}
+<main class="conditionalbranch__page__main">
+    <div class="conditionalbranch__page__container__outside">
+        <div class="conditionalbranch__page__container">
+            <div class="conditionalbranch__title__wrapper">
+                <h1 class="conditionalbranch__title">
+                    条件分岐
+                </h1>
+            </div>
+            <div class="conditionalbranch__contents__wrapper">
+                <p class="conditionalbranch__contents">
+                    <p>
+                        条件分岐の基礎となるif文は、プログラムの制御の基本になる構文です。Pythonの学習をすすめる上で、if文の理解は不可欠なポイントといえるでしょう。今回はPythonの入門者を対象に、このようなPythonのif文の特徴や書き方を、サンプルコードとともに詳細に解説していきます。
+                    </p>
+                    <h2>
+                        Pythonのif文とは
+                    </h2>
+                    <p>
+                        if文は条件分岐をおこなうための文法です。Pythonのif文は、一般的な他のプログラミング言語と同様に、if...elif...elseで構成されています。Pythonのif文も他のプログラミング言語と同じく、条件式の結果が真（true）であるか偽（false）であるかを評価し、「もし条件式Aが真（true）ならBを実行する」という処理をおこないます。この真偽の値を代入することができる変数をboolean型と呼びます。if文の条件式を評価する場合は、真（true）と偽（false）によるboolean型で行います。比較演算子や論理演算子を使って条件式を記述すると、結果がboolean型になります。以上を踏まえて、Pythonのif文の基本形を見てみましょう。
+                    </p>
+                    <br>
+                    <p class="programming">
+                        if 条件式A: <br>
+                        条件式Aが真（true）の場合に実行する処理 <br>
+                        elif 条件式B: <br>
+                        条件式Aが偽（false）で条件式Bが真（true）の場合に実行する処理 <br>
+                        else: <br>
+                        すべての条件式が偽（false）の場合に実行する処理
+                    </p>
+                    <br>
+                    <p>
+                        条件式は:で終了し、ブロックの中はインデントします。Pythonのコードではブロックのインデントをおこなわないとエラーの原因になります。また、Pythonには他のプログラミング言語で一般的にサポートされているSwitch文はありません。Pythonでは条件分岐はすべてif...elif..else...で記述します。
+                    </p>
+                    <h3>
+                        Pythonで使える比較演算子一覧
+                    </h3>
+                    <p>
+                        if文で条件式を記述するには、比較演算子を使用します。比較演算子は主に2つの値を比較し、結果が真の場合はtrue、偽の場合はfalseを返します。if文では比較演算子の結果がtrueの場合、条件が合致したとして分岐後の処理が行われます。Pythonで使用できる比較演算子は以下の10種類になります。
+                    </p>
+                    <table border="1">
+                        <tr>
+                            <th>演算子</th><th>内容</th>
+                        </tr>
+                        <tr>
+                            <td>a == b</td><td>a が b と等しい</td>
+                        </tr>
+                        <tr>
+                            <td>a != b</td><td>a が b と異なる</td>
+                        </tr>
+                        <tr>
+                            <td>a < b</td><td>a が b よりも小さい</td>
+                        </tr>
+                        <tr>
+                            <td>a > b</td><td>a が b よりも大きい</td>
+                        </tr>
+                        <tr>
+                        <td>a <= b</td><td>a が b 以下である</td>
+                        </tr>
+                        <tr>
+                            <td>a >= b</td><td>a が b 以上である</td>
+                        </tr>
+                        <tr>
+                            <td>a is b</td><td>a が b と等しい</td>
+                        </tr>
+                        <tr>
+                            <td>a is not b</td><td>a が b と異なる</td>
+                        </tr>
+                        <tr>
+                            <td>a in b</td><td>a が b に含まれる (a, b は共に文字列、また <br> は、b はリストやタプル)</td>
+                        </tr>
+                        <tr>
+                        <td>a not in b</td><td>a が b に含まれない (a, b は共に文字列、ま <br> たは、b はリストやタプル)</td>
+                        </tr>
+                    </table>
+                    <h3>
+                        Pythonで使える論理演算子一覧
+                    </h3>
+                    <p>
+                        複数の条件文を組み合わせて比較したい場合は、比較演算子ではなく論理演算子を使用します。論理演算子は2つ以上の条件式を評価し、条件に合致する場合にtrueを返します。Pythonで使用できる論理演算子は以下の3種類です。
+                    </p>
+                    <br>
+                    <table border="1">
+                        <tr>
+                            <th>演算子</th><th>内容</th>
+                        </tr>
+                        <tr>
+                            <td>a and b</td><td>a も b も真であれば真</td>
+                        </tr>
+                        <tr>
+                            <td>a or b</td><td>a または b が真であれば真</td>
+                        </tr>
+                        <td>not a</td><td>a が偽であれば真</td>
+                    </table>
+                    <h2>
+                        Python の if文の書き方
+                    </h2>
+                    <p>
+                        それではPythonのif文について基礎的な知識が深まったところで、実際に動くサンプルコードを見ながら詳しく学習を進めていきましょう。ここでは主にif文の基本的な記述方法を解説していきます。
+                    </p>
+                    <h2>
+                        if文の基本形
+                    </h2>
+                    <p>
+                        if文のもっとも基本となる型は、ifのみの構文です。記述の仕方は以下のようになります。
+                    </p>
+                    <br>
+                    <p class="programming">
+                        if 条件式: <br>
+                        条件式が真（true）の場合に実行する処理 
+                    </p>
+                    <br>
+                    <p>
+                        この場合、条件式は1つだけになるので、条件式がtrueにならない場合はなにも処理が実行されません。
+                    </p>
+                    <br>
+                    <p>
+                        次のサンプルコードでは、入力された値を参照し、1だった場合のみ「1です」と出力します。
+                    </p>
+                    <p class="programming">
+                        value = int(input('1～10の数を入力してください')) <br>
+                        if value == 1: <br>
+                        &nbsp; &nbsp; print('1です')
+                    </p>
+                    <h3>
+                        if else の形
+                    </h3>
+                    <p>
+                        ifの条件式が偽（false）であった場合の処理を追加するには、if...elseの構文型を使用します。記述の仕方は以下のような形になります。
+                    </p>
+                    <br>
+                    <p class="programming">
+                        if 条件式: <br>
+                        条件式が真（true）の場合に実行する処理 <br>
+                        else: <br>
+                        条件式が偽（false）の場合に実行する処理
+                    </p>
+                    <br>
+                    <p>
+                        それではサンプルを見てみましょう。次のサンプルコードでは、入力された値を参照し、1だった場合はifの処理が実行され「1です」と出力します。1でなかった場合はelseの処理が実行され「1ではありません」と出力します。
+                    </p>
+                    <br>
+                    <p class="programming">
+                        value = int(input('1～10の数を入力してください')) <br>
+                        &nbsp; &nbsp;if value == 1: <br>
+                        print('1です') <br>
+                        &nbsp; &nbsp;else: <br>
+                        print('1ではありません')
+                    </p>
+                    <h3>
+                        if elif else の形
+                    </h3>
+                    <p>
+                        if...elseに条件分岐を追加するには、elifを使用して、if...elif...elseの構文型にします。記述の仕方は以下のような形になります。
+                    </p>
+                    <p class="programming">
+                        if 条件式A: <br>
+                        &nbsp; &nbsp;条件式Aが真（true）の場合に実行する処理 <br>
+                        elif 条件式B: <br>
+                        &nbsp; &nbsp;条件式Aが偽（false）で条件式Bが真（true）の場合に実行する処理 <br>
+                        else: <br>
+                        &nbsp; &nbsp;すべての条件式が偽（false）の場合に実行する処理
+                    </p>
+                    <p>
+                        それではサンプルを見てみましょう。次のサンプルでは、入力された値を参照して1であればifの処理、2であればelifの処理、それ以外であればelseの処理を実行します。
+                    </p>
+                    <p class="programming">
+                        value = int(input('1～10の数を入力してください')) <br>
+                        if value == 1: <br>
+                        &nbsp; &nbsp;print('1です') <br>
+                        elif value == 2: <br>
+                        &nbsp; &nbsp;print('2です') <br>
+                        else: <br>
+                        &nbsp; &nbsp;print('1でも2でもありません')
+                    </p>
+                    <h3>
+                        elifが複数の場合
+                    </h3>
+                    <p>
+                        elifは複数追加できます。次のサンプルでは、elifが1つ増えて、入力された値が3だった場合の処理が追加されています。
+                    </p>
+                    <p class="programming">
+                        value = int(input('1～10の数を入力してください')) <br>
+                        if value == 1:<br>
+                        &nbsp; &nbsp;print('1です')<br>
+                        elif value == 2:<br>
+                        &nbsp; &nbsp;print('2です')<br>
+                        elif value == 3:<br>
+                        &nbsp; &nbsp;print('3です')<br>
+                        else:<br>
+                        &nbsp; &nbsp;print('1でも2でも3でもありません')
+                    </p>
+                    <p>
+                        elifはいくつでも追加できますが、あまり多くなる場合は可読性や処理速度の低下の原因となるため注意が必要です。こうした場合は、辞書を使用した記述方法を検討する必要があります。辞書を使った条件分岐の記述についてはこちらを参照してください。
+                    </p>
+                    <h3>
+                        and や or を使用した複数条件の書き方
+                    </h3>
+                    <p>
+                        複数の条件式を使用したい場合には、andやorのような論理演算子を使用します。次のサンプルコードは、1～10の数字を入力させ、5以上の偶数であった場合にメッセージを表示するプログラムです。inputで変数valueに入力された値を参照し、まずifの条件式にorを使用して1以上10以下であることを確認しています。もしifが真であった場合、入力範囲をオーバーしていることを伝えるメッセージを表示します。偽であった場合は次のelifに進み、変数valueが2で割った余りが0である（＝偶数である）、かつ6以上であることを確認し、真であった場合はメッセージを表示します。
+                        このように、実際の業務でも入力された値が正しい範囲に収まっていない場合は修正を促したり、2ヶ所に入力された値や文字列を参照してエラーメッセージを表示するなど、使い方はさまざまです。
+                    </p>
+                    <p class="programming">
+                        value = int(input('1～10の数を入力してください'))<br>
+                        if value < 1 or value > 10:<br>
+                        &nbsp; &nbsp;print('範囲がオーバーしています')<br>
+                        elif value % 2 == 0 and value > 5:<br>
+                        &nbsp; &nbsp;print('5より上の偶数です')
+                    </p>
+                    <h3>
+                        入れ子（ネスト）させる場合の書き方
+                    </h3>
+                    <p>
+                        ifの処理の中にさらに条件を分岐したい場合には、内側にif文を挿入する入れ子（ネスト）という記述方法を取ります。
+                        ネストされたif文は、上位のif文の条件式がtrueになった場合のみ条件式の評価が行われます。記述する時に注意するべきポイントは、ネストしたif文は元のif文よりもインデックスすることです。
+                        次のサンプルコードでは、入力された値を参照して偶数であった場合のみ、ネストしたif文の条件式を評価して、5以下か6以上の判定が行われています。
+                    </p>
+                    <p class="programming">
+                        value = int(input('1～10の数を入力してください')) <br>
+                        if value % 2 == 0:<br>
+                        &nbsp; &nbsp;if value < 6:<br>
+                        &nbsp; &nbsp;&nbsp; &nbsp;print('5以下の偶数です')<br>
+                        &nbsp; &nbsp;else:<br>
+                        &nbsp; &nbsp;&nbsp; &nbsp;print('6以上の偶数です')
+                    </p>
+                    <h2>
+                        Python の if文 - 中級編
+                    </h2>
+                    <p>
+                        Pythonの制御構文には、ここまで解説してきた基本的な記述方法の他にも、さまざまな構文があります。if文を使いこなすには、三項演算子やbreakの使い方を習得する必要があります。
+                    </p>
+                    <h3>
+                        if文の代わりにも使える三項演算子の使い方
+                    </h3>
+                    <p>
+                        三項演算子（条件演算子）を使用すると、if文を短くシンプルに記述できます。三項演算子の基本的な記述方法は以下のとおりです。
+                    </p>
+                    <p class="programming">
+                        真の時の処理 if条件式 else 偽の時の処理
+                    </p>
+                    <p>
+                        このような構造のif...else文を、以下のようなシンプルな構造に書き換えられます。三項演算子の構造を理解したところで、実際のコードを見てみましょう。以下のサンプルでは、変数numが5の場合は「5です。」、それ以外であれば「5以外です。」と表示するif...elseを三項演算子で書き換えています。どちらのコードも同じ処理をおこないます。
+                    </p>
+                    <br>
+                    <p>
+                        if...else文の場合
+                    </p>
+                    <p class="programming">
+                        num = 2<br>
+                        if num == 5:<br>
+                        &nbsp; &nbsp;print('5です')<br>
+                        else:<br>
+                        &nbsp; &nbsp;print('5以外です')
+                    </p>
+                    <p>
+                        三項演算子の場合
+                    </p>
+                    <p class="programming">
+                        num = 2 <br>
+                        print('5です') if num == 5 else print('5以外です')
+                    </p>
+                    <h3>
+                        pass文とcontiune文
+                    </h3>
+                    <p>
+                        Pythonのpass文は「なにもしない」文であり、文法上なにかを記述する必要があるがなんの処理も実行しない場合に使用します。Pythonでは条件分岐のif文では中身を省略することができず、なにも記述しないとエラーになります。そこで、なにも実行したくない場合にpass文を使用します。pass文はなにも実行しないため、pass文のあとに記述された処理はそのまま実行されます。次のサンプルコードでは、pass文が記述されたあとのprintも続けて実行されるため、iが5までは「5以下はパスします」という文字列が表示されます。
+                    </p>
+                    <p class="programming">
+                        for i in range(10):<br>
+                        &nbsp; &nbsp;print(i)<br>
+                        &nbsp; &nbsp;if i >= 5:<br>
+                        &nbsp; &nbsp;&nbsp; &nbsp;pass<br>
+                        &nbsp; &nbsp;&nbsp; &nbsp;print('5以下はパスします')
+                    </p>
+                    <p>
+                        continue文は記述された時点で処理を終了し、ループ処理の先頭に戻って再びループ処理を開始します。そのため、pass文とは異なり、continue文が記述された以降の処理は行われません。次のサンプルコードでは、continueよりあとに記述されたprintは実行されないため、「5以下はすぐループの先頭に戻ります」という文字列は表示されません。
+                    </p>
+                    <p class="programming">
+                        for i in range(10): <br>
+                        &nbsp; &nbsp;print(i)<br>
+                        &nbsp; &nbsp;if i >= 5:<br>
+                        &nbsp; &nbsp;&nbsp; &nbsp;continue<br>
+                        &nbsp; &nbsp;&nbsp; &nbsp;print('5以下はすぐループの先頭に戻ります')<br>
+                        &nbsp; &nbsp;else:<br>
+                        &nbsp; &nbsp;&nbsp; &nbsp;print("6以上になりました")
+                    </p>
+                    <h3>
+                        break文
+                    </h3>
+                    <p>
+                        breakは記述された時点でループ処理を終了する命令です。while文やfor文のようなループ処理の中に組み込まれたif文と組み合わせて使用することで、特定の条件式が真になった場合にループ処理を終了するコードが書けます。
+                    </p>
+                    <p>
+                        if...break文の記述は以下のような形になります。
+                    </p>
+                    <p class="programming">
+                        while 条件式A: <br>
+                        &nbsp;if 条件式B:<br>
+                        &nbsp;&nbsp;break
+                    </p>
+                    <p>
+                        次のサンプルコードでは、変数numbersの値を表示して+1ずつ加算するループ処理をおこない、numbersが10になった場合はif...break文でループを終了して「値が10になったので処理を終了します」というメッセージを表示します。
+                    </p>
+                    <h2>
+                        Pythonの基本であるif文をマスターしよう！
+                    </h2>
+                    <img src="{% static 'img/conditionalbranch01.png' %}" alt="img">
+                    <p>
+                        条件分岐をおこなうif文は、さまざまな制御の基本となります。if文をマスターすることで、他の構文の中でif文を使用してプログラミングをおこない、プログラムの挙動を制御できるようになります。if文は単独で使うだけでなく、ループ処理を始めとした他の構文の中にネストして使用することが頻繁にあります。そのため、if文をしっかりと理解していないとさせたい挙動を上手く制御できなくなってしまいます。比較演算子や論理演算子の使い方をしっかりとマスターして、if文を使いこなしましょう。
+                    </p>
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

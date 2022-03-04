@@ -1,0 +1,17 @@
+{% load static %}
+<footer class="footer">   
+    <nav class="footer__list">
+        <a href="{% url 'learningSite:index' %}" class="footer__list__home">
+            <p class="home">ホーム</p>
+        </a>
+        <a href="{% url 'learningSite:python' %}" class="footer__list__menu">
+            <p class="mozi">Pythonとは</p>
+        </a>
+        <a href="{% url 'learningSite:list' %}" class="footer__list__menu">
+            <p class="mozi">授業一覧</p>
+        </a>
+        <a href="{% url 'learningSite:explanation' %}" class="footer__list__menu">
+            <p class="mozi">このサイトについて</p>
+        </a>
+    </nav>
+</footer>
